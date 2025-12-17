@@ -49,7 +49,6 @@ public class PostgreSQLDriver {
             PreparedStatement deleteDepot = conn.prepareStatement(deleteDepotString);
             deleteDepot.setString(1, "d1");
             deleteDepot.executeUpdate();
-            stmt1.executeUpdate("DELETE FROM depot WHERE depid='d1'");              //Transaction #2: The depot d1 is deleted from Depot and Stock.
 
             rs = selectProd.executeQuery();
             System.out.println("-----Product POST #1-----");
@@ -154,7 +153,6 @@ public class PostgreSQLDriver {
             insertProd.setString(1, "p100");
             insertProd.setString(2, "cd");
             insertProd.setDouble(3, 5);
-            ;
             insertProd.executeUpdate();
             String insertDepotString = "INSERT INTO depot (depid, addr, volume) VALUES (?,?,?)";
             PreparedStatement insertDepot = conn.prepareStatement(insertDepotString);
@@ -167,14 +165,12 @@ public class PostgreSQLDriver {
             insertProdStock.setString(1, "p100");
             insertProdStock.setString(2, "d2");
             insertProdStock.setDouble(3, 50);
-            ;
             insertProdStock.executeUpdate();
             String insertDepotStockString = "INSERT INTO stock (prod_id, depid, quantity) VALUES (?,?,?)";
             PreparedStatement insertDepotStock = conn.prepareStatement(insertDepotStockString);
             insertDepotStock.setString(1, "p1");
             insertDepotStock.setString(2, "d100");
             insertDepotStock.setDouble(3, 100);
-            ;
             insertDepotStock.executeUpdate();
 
             rs = selectProd.executeQuery();
