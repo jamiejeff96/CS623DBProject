@@ -39,19 +39,19 @@ public class PostgreSQLDriver {
 
 
         rs = stmt1.executeQuery("select * from product");
-        System.out.println("-----Product POST-----");
+        System.out.println("-----Product POST #1-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("prod_id")+" "+rs.getString("pname")+" "+rs.getDouble("price"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from depot");
-        System.out.println("-----Depot POST-----");
+        System.out.println("-----Depot POST #1-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("depid")+" Address: "+rs.getString("addr")+" volume "+rs.getDouble("volume"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from stock");
-        System.out.println("-----Stock POST-----");
+        System.out.println("-----Stock POST #1-----");
         while(rs.next()) {
             System.out.println("Prod ID: " + rs.getString("prod_id")+" Depot ID: "+rs.getString("depid")+" Quantity "+rs.getDouble("quantity"));
         }
@@ -95,19 +95,19 @@ public class PostgreSQLDriver {
 //        stmt1.executeUpdate("UPDATE depot SET depid='dd1' where depid='d1'");               //Transaction #4: The depot d1 changes its name to dd1 in Depot and Stock.
 
         rs = stmt1.executeQuery("select * from product");
-        System.out.println("-----Product POST-----");
+        System.out.println("-----Product POST #2-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("prod_id")+" "+rs.getString("pname")+" "+rs.getDouble("price"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from depot");
-        System.out.println("-----Depot POST-----");
+        System.out.println("-----Depot POST #2-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("depid")+" Address: "+rs.getString("addr")+" volume "+rs.getDouble("volume"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from stock");
-        System.out.println("-----Stock POST-----");
+        System.out.println("-----Stock POST #2-----");
         while(rs.next()) {
             System.out.println("Prod ID: " + rs.getString("prod_id")+" Depot ID: "+rs.getString("depid")+" Quantity "+rs.getDouble("quantity"));
         }
@@ -165,19 +165,19 @@ public class PostgreSQLDriver {
         insertDepotStock.executeUpdate();
 
         rs = stmt1.executeQuery("select * from product");
-        System.out.println("-----Product POST-----");
+        System.out.println("-----Product POST #3-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("prod_id")+" "+rs.getString("pname")+" "+rs.getDouble("price"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from depot");
-        System.out.println("-----Depot POST-----");
+        System.out.println("-----Depot POST #3-----");
         while(rs.next()) {
             System.out.println("ID: " + rs.getString("depid")+" Address: "+rs.getString("addr")+" volume "+rs.getDouble("volume"));
         }
         System.out.println();
         rs = stmt1.executeQuery("select * from stock");
-        System.out.println("-----Stock POST-----");
+        System.out.println("-----Stock POST #3-----");
         while(rs.next()) {
             System.out.println("Prod ID: " + rs.getString("prod_id")+" Depot ID: "+rs.getString("depid")+" Quantity "+rs.getDouble("quantity"));
         }
