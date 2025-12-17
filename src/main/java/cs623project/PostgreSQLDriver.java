@@ -16,19 +16,25 @@ public class PostgreSQLDriver {
 
         //Validate Pre-transaction state
         try {
-            ResultSet rs = stmt1.executeQuery("select * from product");
+            String selectProduct = "select * from product";
+            PreparedStatement selectProd = conn.prepareStatement(selectProduct);
+            ResultSet rs = selectProd.executeQuery();
             System.out.println("-----Product PRE-----");
             while (rs.next()) {
                 System.out.println("ID: " + rs.getString("prod_id") + " " + rs.getString("pname") + " " + rs.getDouble("price"));
             }
             System.out.println();
-            rs = stmt1.executeQuery("select * from depot");
+            String selectDepotString = "select * from depot";
+            PreparedStatement selectDepot = conn.prepareStatement(selectDepotString);
+            rs = selectDepot.executeQuery();
             System.out.println("-----Depot PRE-----");
             while (rs.next()) {
                 System.out.println("ID: " + rs.getString("depid") + " Address: " + rs.getString("addr") + " volume " + rs.getDouble("volume"));
             }
             System.out.println();
-            rs = stmt1.executeQuery("select * from stock");
+            String selectStockString = "select * from stock";
+            PreparedStatement selectStock = conn.prepareStatement(selectStockString);
+            rs = selectStock.executeQuery();
             System.out.println("-----Stock PRE-----");
             while (rs.next()) {
                 System.out.println("Prod ID: " + rs.getString("prod_id") + " Depot ID: " + rs.getString("depid") + " Quantity " + rs.getDouble("quantity"));
@@ -45,24 +51,18 @@ public class PostgreSQLDriver {
             deleteDepot.executeUpdate();
             stmt1.executeUpdate("DELETE FROM depot WHERE depid='d1'");              //Transaction #2: The depot d1 is deleted from Depot and Stock.
 
-            String selectProduct = "select * from product";
-            PreparedStatement selectProd = conn.prepareStatement(selectProduct);
             rs = selectProd.executeQuery();
             System.out.println("-----Product POST #1-----");
             while (rs.next()) {
                 System.out.println("ID: " + rs.getString("prod_id") + " " + rs.getString("pname") + " " + rs.getDouble("price"));
             }
             System.out.println();
-            String selectDepotString = "select * from depot";
-            PreparedStatement selectDepot = conn.prepareStatement(selectDepotString);
             rs = selectDepot.executeQuery();
             System.out.println("-----Depot POST #1-----");
             while (rs.next()) {
                 System.out.println("ID: " + rs.getString("depid") + " Address: " + rs.getString("addr") + " volume " + rs.getDouble("volume"));
             }
             System.out.println();
-            String selectStockString = "select * from stock";
-            PreparedStatement selectStock = conn.prepareStatement(selectStockString);
             rs = selectStock.executeQuery();
             System.out.println("-----Stock POST #1-----");
             while (rs.next()) {
